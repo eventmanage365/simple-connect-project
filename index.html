@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Connect Project</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <button id="connectBtn">Connect to Backend</button>
+    <p id="response"></p>
+
+    <script>
+        document.getElementById('connectBtn').addEventListener('click', async () => {
+            try {
+                const response = await fetch('http://localhost:5000/api/connect');
+                const data = await response.text();
+                document.getElementById('response').innerText = data;
+            } catch (error) {
+                document.getElementById('response').innerText = 'Error connecting to backend!';
+            }
+        });
+    </script>
+</body>
+</html>
